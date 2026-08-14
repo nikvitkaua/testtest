@@ -97,21 +97,21 @@ button {
 .landing__coins {
   position: absolute;
   top: 0;
-  left: 5vh;
+  left: 5dvh;
   width: 100%;
   height: auto;
   z-index: 2;
   pointer-events: none;
-  max-width: 50vh;
+  max-width: 50dvh;
 }
 
 .landing__coin {
   position: absolute;
-  top: 5vh;
-  right: 5vh;
+  top: 5dvh;
+  right: 5dvh;
   width: 100%;
   height: auto;
-  max-width: 15vh;
+  max-width: 15dvh;
   z-index: 2;
   pointer-events: none;
 }
@@ -288,13 +288,13 @@ button {
 .characters__man {
   left: 0%;
   width: 100%;
-  max-width: 40vh;
+  max-width: 40dvh;
 }
 
 .characters__raccoon {
   right: 0%;
   width: 100%;
-  max-width: 25vh;
+  max-width: 25dvh;
 }
 
 .wheel__inner.is-spinning .wheel__disc {
@@ -379,7 +379,7 @@ button {
   }
 
   100% {
-    transform: translateY(110vh) rotate(720deg);
+    transform: translateY(110dvh) rotate(720deg);
     opacity: 0.85;
   }
 }
@@ -388,7 +388,7 @@ button {
   position: relative;
   z-index: 2;
   width: 100%;
-  max-width: 70vh;
+  max-width: 70dvh;
   left: 3%;
   top: 10%;
 
@@ -451,7 +451,7 @@ button {
   align-items: center;
 
   width: 100%;
-  min-height: 5vh;
+  min-height: 5dvh;
 
   padding: 5px 8px;
 
@@ -705,7 +705,7 @@ button {
 
 @media (min-width: 500px) {
   .characters {
-    gap: 17vh;
+    gap: 17dvh;
   }
 }
 
@@ -816,7 +816,7 @@ button {
   }
 
   .prize-modal{
-    max-width: 60vh;
+    max-width: 60dvh;
   }
 
   .prize-form__switch {
