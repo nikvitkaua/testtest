@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SLOTORADO</title>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <main class="landing" id="landing">
+      <!-- <img
+        class="landing__bg"
+        src="./assets/images/web/web_bg.jpg"
+        alt=""
+        width="430"
+        height="932"
+      /> -->
+
+      <picture>
+        <source
+          media="(min-width: 768px)"
+          srcset="./assets/images/web/web_coins.png"
+        />
+        <img
+          class="landing__coins"
+          src="./assets/images/mob/mob_coins.png"
+          alt=""
+          width="430"
+          height="932"
+        />
+      </picture>
+
+      <img src="./assets/images/mob/mob_coin.png" alt="" class="landing__coin">
+
+      <div class="wheel-wrap" id="wheelWrap">
+        <div class="wheel">
+          <div class="wheel__shadows">
+            <span class="wheel__shadow wheel__shadow--left"></span>
+            <span class="wheel__shadow wheel__shadow--right"></span>
+            <span class="wheel__shadow wheel__shadow--main"></span>
+          </div>
+          <div class="wheel__inner" id="wheelInner">
+            <img
+              class="wheel__disc"
+              src="./assets/images/mob/mob_wheel_inner.png"
+              alt=""
+            />
+          </div>
+
+          <img
+            class="wheel__outer"
+            src="./assets/images/mob/mob_wheel_outer.png"
+            alt=""
+            width="600"
+            height="600"
+          />
+
+          <img
+            class="wheel__pointer"
+            src="./assets/images/mob/mob_wheel_pointer.png"
+            alt=""
+            width="120"
+            height="120"
+          />
+
+          <button class="wheel__btn" id="spinBtn" type="button" aria-label="Spin">
+            <img
+              src="./assets/images/mob/mob_wheel_button.png"
+              alt=""
+              width="120"
+              height="120"
+            />
+          </button>
+        </div>
+      </div>
+
+      <div class="characters" id="characters">
+        <img
+          class="characters__man"
+          src="./assets/images/mob/mob_man.png"
+          alt=""
+          width="400"
+          height="500"
+        />
+        <img
+          class="characters__raccoon"
+          src="./assets/images/mob/mob_bandito.png"
+          alt=""
+          width="400"
+          height="500"
+        />
+      </div>
+    </main>
+
+    <div class="prize-overlay" id="prizeOverlay" aria-hidden="true">
+      <div class="prize-overlay__backdrop"></div>
+      <div class="coin-rain" id="coinRain" aria-hidden="true"></div>
+
+      <div class="prize-modal">
+        <div class="prize-modal__frame-wrap">
+          <img
+            class="prize-modal__frame"
+            src="./assets/images/mob/mob_reg_bg.png"
+            alt=""
+          />
+
+          <div class="prize-modal__content">
+            <img
+              class="prize-modal__bonus"
+              src="./assets/images/mob/mob_reg_bonus.png"
+              alt="Your Gift 120% Bonus + 50 FS"
+            />
+
+            <form class="prize-form" id="prizeForm">
+              <label class="prize-form__field">
+                <span class="prize-form__icon" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7.03646 11.1149C6.42702 11.1149 5.85429 10.9993 5.31827 10.768C4.78226 10.5367 4.316 10.2228 3.9195 9.82627C3.52299 9.42977 3.20909 8.96351 2.9778 8.42749C2.74651 7.89148 2.63086 7.31875 2.63086 6.70931C2.63086 6.09987 2.74651 5.52714 2.9778 4.99113C3.20909 4.45511 3.52299 3.98885 3.9195 3.59235C4.316 3.19584 4.78226 2.88195 5.31827 2.65065C5.85429 2.41936 6.42702 2.30371 7.03646 2.30371C7.6459 2.30371 8.21863 2.41936 8.75464 2.65065C9.29066 2.88195 9.75692 3.19584 10.1534 3.59235C10.5499 3.98885 10.8638 4.45511 11.0951 4.99113C11.3264 5.52714 11.4421 6.09987 11.4421 6.70931V7.34812C11.4421 7.78134 11.2934 8.15031 10.996 8.45503C10.6986 8.75975 10.3333 8.91211 9.9001 8.91211C9.64311 8.91211 9.4008 8.85704 9.17317 8.7469C8.94555 8.63676 8.75464 8.47889 8.60045 8.2733C8.38751 8.48624 8.14704 8.64594 7.87903 8.75241C7.61102 8.85888 7.33017 8.91211 7.03646 8.91211C6.42702 8.91211 5.90752 8.69734 5.47798 8.26779C5.04843 7.83824 4.83366 7.31875 4.83366 6.70931C4.83366 6.09987 5.04843 5.58038 5.47798 5.15083C5.90752 4.72128 6.42702 4.50651 7.03646 4.50651C7.6459 4.50651 8.16539 4.72128 8.59494 5.15083C9.02449 5.58038 9.23926 6.09987 9.23926 6.70931V7.34812C9.23926 7.53903 9.30167 7.70057 9.4265 7.83274C9.55132 7.96491 9.70919 8.03099 9.9001 8.03099C10.091 8.03099 10.2489 7.96491 10.3737 7.83274C10.4985 7.70057 10.5609 7.53903 10.5609 7.34812V6.70931C10.5609 5.72539 10.2195 4.892 9.53664 4.20913C8.85377 3.52626 8.02038 3.18483 7.03646 3.18483C6.05254 3.18483 5.21915 3.52626 4.53628 4.20913C3.85341 4.892 3.51198 5.72539 3.51198 6.70931C3.51198 7.69323 3.85341 8.52662 4.53628 9.20949C5.21915 9.89236 6.05254 10.2338 7.03646 10.2338H9.23926V11.1149H7.03646ZM7.03646 8.03099C7.40359 8.03099 7.71566 7.90249 7.97265 7.6455C8.22964 7.38851 8.35814 7.07644 8.35814 6.70931C8.35814 6.34218 8.22964 6.03011 7.97265 5.77312C7.71566 5.51613 7.40359 5.38763 7.03646 5.38763C6.66933 5.38763 6.35726 5.51613 6.10027 5.77312C5.84328 6.03011 5.71478 6.34218 5.71478 6.70931C5.71478 7.07644 5.84328 7.38851 6.10027 7.6455C6.35726 7.90249 6.66933 8.03099 7.03646 8.03099Z" fill="#7E92A1"/>
+                    </svg>
+                    
+                </span>
+            
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="usergmail@com"
+                  autocomplete="email"
+                  required
+                />
+              </label>
+            
+              <label class="prize-form__field">
+                <span class="prize-form__icon" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4.32353 7.65906C4.052 7.65906 3.81955 7.56641 3.62618 7.3811C3.43281 7.19579 3.33613 6.97302 3.33613 6.7128C3.33613 6.45258 3.43281 6.22982 3.62618 6.04451C3.81955 5.8592 4.052 5.76654 4.32353 5.76654C4.59507 5.76654 4.82752 5.8592 5.02088 6.04451C5.21425 6.22982 5.31093 6.45258 5.31093 6.7128C5.31093 6.97302 5.21425 7.19579 5.02088 7.3811C4.82752 7.56641 4.59507 7.65906 4.32353 7.65906ZM4.32353 9.55158C3.5007 9.55158 2.80129 9.27559 2.2253 8.7236C1.64932 8.17162 1.36133 7.50135 1.36133 6.7128C1.36133 5.92425 1.64932 5.25399 2.2253 4.702C2.80129 4.15002 3.5007 3.87402 4.32353 3.87402C4.87483 3.87402 5.3747 4.00413 5.82315 4.26436C6.27159 4.52458 6.62747 4.8676 6.89077 5.29341H11.2353L12.7164 6.7128L10.4948 8.84189L9.50739 8.13219L8.51999 8.84189L7.47087 8.13219H6.89077C6.62747 8.55801 6.27159 8.90103 5.82315 9.16125C5.3747 9.42147 4.87483 9.55158 4.32353 9.55158ZM4.32353 8.60532C4.78432 8.60532 5.18956 8.47127 5.53927 8.20316C5.88897 7.93505 6.12142 7.59598 6.23662 7.18593H7.77944L8.4953 7.67089L9.50739 6.94937L10.3837 7.59992L11.3094 6.7128L10.8157 6.23967H6.23662C6.12142 5.82963 5.88897 5.49055 5.53927 5.22244C5.18956 4.95434 4.78432 4.82028 4.32353 4.82028C3.78046 4.82028 3.31556 5.00559 2.92883 5.37621C2.5421 5.74683 2.34873 6.19236 2.34873 6.7128C2.34873 7.23324 2.5421 7.67877 2.92883 8.04939C3.31556 8.42001 3.78046 8.60532 4.32353 8.60532Z" fill="#7E92A1"/>
+                    </svg>
+                </span>
+            
+                <input
+                  type="password"
+                  name="password"
+                  id="passwordInput"
+                  placeholder="••••••••••"
+                  autocomplete="new-password"
+                  required
+                />
+            
+                <button
+                  class="prize-form__toggle-pass"
+                  type="button"
+                  id="togglePassword"
+                  aria-label="Show pass"
+                >
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M6.99902 8.76992C7.57397 8.76992 8.06268 8.57316 8.46515 8.17964C8.86761 7.78612 9.06885 7.30827 9.06885 6.74609C9.06885 6.18392 8.86761 5.70607 8.46515 5.31255C8.06268 4.91903 7.57397 4.72227 6.99902 4.72227C6.42407 4.72227 5.93536 4.91903 5.5329 5.31255C5.13043 5.70607 4.9292 6.18392 4.9292 6.74609C4.9292 7.30827 5.13043 7.78612 5.5329 8.17964C5.93536 8.57316 6.42407 8.76992 6.99902 8.76992ZM6.99902 7.96039C6.65405 7.96039 6.36083 7.84233 6.11935 7.60622C5.87787 7.37011 5.75713 7.0834 5.75713 6.74609C5.75713 6.40879 5.87787 6.12208 6.11935 5.88597C6.36083 5.64985 6.65405 5.5318 6.99902 5.5318C7.34399 5.5318 7.63722 5.64985 7.8787 5.88597C8.12018 6.12208 8.24092 6.40879 8.24092 6.74609C8.24092 7.0834 8.12018 7.37011 7.8787 7.60622C7.63722 7.84233 7.34399 7.96039 6.99902 7.96039ZM6.99902 10.1191C5.87979 10.1191 4.8602 9.81369 3.94028 9.2028C3.02036 8.5919 2.35342 7.773 1.93945 6.74609C2.35342 5.71919 3.02036 4.90029 3.94028 4.28939C4.8602 3.6785 5.87979 3.37305 6.99902 3.37305C8.11826 3.37305 9.13784 3.6785 10.0578 4.28939C10.9777 4.90029 11.6446 5.71919 12.0586 6.74609C11.6446 7.773 10.9777 8.5919 10.0578 9.2028C9.13784 9.81369 8.11826 10.1191 6.99902 10.1191ZM6.99902 9.21966C7.86528 9.21966 8.66063 8.99667 9.38507 8.55067C10.1095 8.10468 10.6634 7.50316 11.0467 6.74609C10.6634 5.98903 10.1095 5.38751 9.38507 4.94151C8.66063 4.49552 7.86528 4.27253 6.99902 4.27253C6.13276 4.27253 5.33741 4.49552 4.61298 4.94151C3.88854 5.38751 3.33467 5.98903 2.95137 6.74609C3.33467 7.50316 3.88854 8.10468 4.61298 8.55067C5.33741 8.99667 6.13276 9.21966 6.99902 9.21966Z" fill="#7E92A1"/>
+                  </svg>
+                </button>
+              </label>
+            
+              <label class="prize-form__field prize-form__field--select">
+                <span class="prize-form__icon" aria-hidden="true">💳</span>
+                <p>CAD | Canadian dollar</p>
+            
+                <!-- <select name="currency" required>
+                  <option value="CAD">CAD | Canadian dollar</option>
+                </select> -->
+              </label>
+            
+              <label class="prize-form__terms">
+                <input
+                  class="prize-form__checkbox"
+                  type="checkbox"
+                  name="terms"
+                  required
+                  checked
+                />
+            
+                <span class="prize-form__switch" aria-hidden="true"></span>
+            
+                <span class="prize-form__terms-text">
+                  I am 18 years old.<br>
+                  I accept <a href="#">Privacy Policy</a> and <a href="#">Terms and Conditions</a><br>
+                  Get exclusive offers and promotions from Kraken
+                </span>
+              </label>
+            
+              <button class="prize-form__submit" type="submit">
+                Get Prize
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./assets/js/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,859 @@
+@import url("fonts.css");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: "Outfit", sans-serif;;
+  background: #000;
+  overflow-x: hidden;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+
+  left: 0;
+  width: 100%;
+  height: 80px;
+
+  pointer-events: none;
+  z-index: 100;
+}
+
+body::before {
+  top: 0;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.8),
+    transparent
+  );
+}
+
+body::after {
+  bottom: 0;
+
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.8),
+    transparent
+  );
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.landing {
+  position: relative;
+  width: 100%;
+  /* max-width: 430px; */
+  min-height: 100dvh;
+  margin: 0 auto;
+  overflow: hidden;
+  background-image: url("../images/mob/mob_bg.jpg");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.landing__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.landing__coins {
+  position: absolute;
+  top: 0;
+  left: 5vh;
+  width: 100%;
+  height: auto;
+  z-index: 2;
+  pointer-events: none;
+  max-width: 50vh;
+}
+
+.landing__coin {
+  position: absolute;
+  top: 5vh;
+  right: 5vh;
+  width: 100%;
+  height: auto;
+  max-width: 15vh;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.wheel-wrap {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  padding-top: 20%;
+}
+
+.wheel {
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  aspect-ratio: 1;
+
+  /* background:
+    radial-gradient(
+      ellipse 29% 7% at 26% 93%,
+      rgba(0, 0, 0, 1),
+      transparent 75%
+    ),
+    radial-gradient(
+      ellipse 29% 7% at 74% 93%,
+      rgba(0, 0, 0, 1),
+      transparent 75%
+    ),
+    radial-gradient(
+      ellipse 70% 4% at 50% 97%,
+      rgba(0, 0, 0, 0.5),
+      transparent 75%
+    ); */
+}
+
+.wheel__shadows {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+
+  bottom: -28px;
+
+  z-index: 0;
+
+  pointer-events: none;
+}
+
+.wheel__shadow {
+  position: absolute;
+
+  display: block;
+
+  background: rgba(0, 0, 0, 0.9);
+
+  border-radius: 50%;
+
+  filter: blur(7px);
+}
+
+.wheel__shadow--left {
+  width: 150px;
+  height: 30px;
+  left: 5%;
+  bottom: 25px;
+}
+
+.wheel__shadow--right {
+  width: 150px;
+  height: 30px;
+  right: 5%;
+  bottom: 25px;
+}
+
+.wheel__shadow--main {
+  width: 300px;
+  height: 40px;
+  left: 50%;
+  bottom: -15px;
+  transform: translateX(-50%);
+  opacity: 0.45;
+}
+
+.wheel__outer {
+  position: relative;
+  z-index: 4;
+  width: 100%;
+  pointer-events: none;
+}
+
+.wheel__inner {
+  position: absolute;
+  left: 50.5%;
+  top: 44.5%;
+  width: 93%;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.wheel__disc {
+  width: 100%;
+  height: 100%;
+  transform-origin: center center;
+  will-change: transform;
+}
+
+.wheel__pointer {
+  position: absolute;
+  top: -4%;
+  left: 49%;
+  width: 32%;
+  transform: translateX(-50%);
+  z-index: 5;
+  pointer-events: none;
+}
+
+.wheel__btn {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  width: 21%;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+
+  border: none;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  
+}
+
+.wheel__btn img {display: none;}
+
+.wheel__btn:hover:not(:disabled) {
+  transform: translate(-50%, -50%) scale(1.05);
+}
+
+.wheel__btn:active:not(:disabled) {
+  transform: translate(-50%, -50%) scale(0.95);
+}
+
+.wheel__btn:disabled {
+  cursor: default;
+  opacity: 0.85;
+}
+
+.wheel__btn img {
+  width: 100%;
+}
+
+.characters {
+  position: absolute;
+  bottom: 0;
+  left: -5%;
+  width: 100%;
+  height: auto;
+  z-index: 4;
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+}
+
+/* .characters__man,
+.characters__raccoon {
+  position: absolute;
+  bottom: 0;
+  height: auto;
+} */
+
+.characters__man {
+  left: 0%;
+  width: 100%;
+  max-width: 40vh;
+}
+
+.characters__raccoon {
+  right: 0%;
+  width: 100%;
+  max-width: 25vh;
+}
+
+.wheel__inner.is-spinning .wheel__disc {
+  transition: transform 4.5s cubic-bezier(0.17, 0.67, 0.12, 0.99);
+}
+
+.wheel-wrap {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.wheel-wrap.is-hidden {
+  opacity: 0;
+  transform: scale(0.92);
+  pointer-events: none;
+}
+
+.landing.is-modal-open .landing__bg,
+.landing.is-modal-open .landing__coins {
+  filter: blur(6px);
+  transition: filter 0.5s ease;
+}
+
+.landing.is-modal-open .characters {
+  z-index: 30;
+  bottom: -3%;
+}
+
+.prize-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 12px 120px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.45s ease, visibility 0.45s ease;
+}
+
+.prize-overlay.is-visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.prize-overlay__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(4, 12, 28, 0.25);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  
+}
+
+.coin-rain {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.coin-rain__coin {
+  position: absolute;
+  top: -60px;
+  opacity: 0;
+  animation-name: coin-fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes coin-fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(110vh) rotate(720deg);
+    opacity: 0.85;
+  }
+}
+
+.prize-modal {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 70vh;
+  left: 3%;
+  top: 10%;
+
+  transform: translateY(40px) scale(0.88);
+  opacity: 0;
+
+  transition:
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.45s ease;
+}
+
+.prize-overlay.is-visible .prize-modal {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.prize-modal__frame-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.prize-modal__frame {
+  width: 100%;
+  height: auto;
+}
+
+.prize-modal__content {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+
+  padding: 27% 25% 25% 20%;
+}
+
+.prize-modal__bonus {
+  width: 100%;
+  height: auto;
+  margin-bottom: 12px;
+}
+
+.prize-form {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+
+/* =========================
+   INPUT / SELECT FIELDS
+   ========================= */
+
+.prize-form__field {
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+  min-height: 5vh;
+
+  padding: 5px 8px;
+
+  border-radius: 6px;
+
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #e8edf5 100%
+  );
+}
+
+.prize-form__field--select {
+  background: #0A0704;
+  border: 0.85px solid #251E12;
+  margin-top: 2px;
+}
+
+
+/* ICON */
+
+.prize-form__icon {
+  flex: 0 0 14px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-right: 4px;
+
+  font-size: 8px;
+  line-height: 1;
+
+  opacity: 0.55;
+}
+
+
+/* INPUT + SELECT */
+
+.prize-form__field input,
+.prize-form__field p {
+  min-width: 0;
+  flex: 1;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+  font-size: clamp(.5rem, 2vw, 1.25rem);
+  font-weight: 400;
+  line-height: 1;
+
+  color: #0B1620;
+}
+
+.prize-form__field input::placeholder {
+  color: #0B1620;
+}
+
+
+/* SELECT */
+
+.prize-form__field p {
+  appearance: none;
+  cursor: pointer;
+  font-size: clamp(.4rem, 2vw, 1.1rem);
+  font-weight: 500;
+
+  color: #7E92A1;
+}
+
+
+/* =========================
+   PASSWORD TOGGLE
+   ========================= */
+
+.prize-form__toggle-pass {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 14px;
+  height: 14px;
+
+  margin-left: 4px;
+
+  border: none;
+  padding: 0;
+
+  background: transparent;
+
+  font-size: 8px;
+  line-height: 1;
+
+  opacity: 0.55;
+
+  cursor: pointer;
+}
+
+
+/* =========================
+   TERMS
+   ========================= */
+
+.prize-form__terms {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 6px;
+
+  margin-top: 6px;
+
+  cursor: pointer;
+}
+
+
+/* REAL CHECKBOX HIDDEN */
+
+.prize-form__checkbox {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+
+  opacity: 0;
+}
+
+
+/* CUSTOM SWITCH */
+
+.prize-form__switch {
+  position: relative;
+
+  width: 30px;
+  height: 18px;
+
+  border-radius: 999px;
+
+  background: #f1f1f1;
+
+  transition: background 0.2s ease;
+}
+
+
+/* SWITCH CIRCLE */
+
+.prize-form__switch::after {
+  content: "";
+
+  position: absolute;
+
+  top: 2px;
+  left: 2px;
+
+  width: 14px;
+  height: 14px;
+
+  border-radius: 50%;
+
+  background: #89A5DF;
+
+  transition: transform 0.2s ease;
+}
+
+
+/* CHECKED */
+.prize-form__checkbox:checked + .prize-form__switch::after {
+  transform: translateX(12px);
+  background: linear-gradient(180deg, #6997EC 0%, #334E98 100%);
+  box-shadow: 0px 2px 2px 0px #00000066;
+}
+
+.prize-form__checkbox:disabled + .prize-form__switch {
+  background: #AFB1B6;
+}
+
+.prize-form__checkbox:disabled + .prize-form__switch::after {
+  background: #767A83;
+}
+
+/* TERMS TEXT */
+
+.prize-form__terms-text {
+  flex: 1;
+
+  font-size: clamp(0.375rem, 1vw, 0.56rem);
+  line-height: 1;
+  font-weight: 400;
+
+  color: #F1F1F1;
+
+}
+
+.prize-form__terms-text a {
+  color: #FFA034;
+  text-decoration: none;
+}
+
+
+/* =========================
+   SUBMIT BUTTON
+   ========================= */
+
+.prize-form__submit {
+  width: 100%;
+  min-height: clamp(2rem, 3vw, 3.5rem);
+
+  margin-top: 2px;
+
+  border: none;
+  border-radius: 50px;
+
+  background: linear-gradient(180deg, #6997EC 0%, #334E98 100%);
+  box-shadow: 0px 2px 2px 0px #00000066;
+
+
+  border: 1px solid #2F447B;
+
+  color: #fff;
+
+  font-size: clamp(0.8rem, 1vw, 1.2rem);
+  font-weight: 700;
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.15s ease;
+}
+
+.prize-form__submit:hover {
+  transform: scale(1.05);
+  background: linear-gradient(180deg, #A7C1FF 0%, #4D6AD5 100%);
+  border: 1px solid #4B68D0;
+  box-shadow: 0px 2px 2px 0px #00000066;
+
+}
+
+.prize-form__submit:focus {
+  background: linear-gradient(180deg, #ABC8FC 0%, #334E98 112.5%);
+  border: 1px solid #425C9F;
+}
+
+.prize-form__submit:disabled {
+  background: linear-gradient(180deg, #4B6597 0%, #30416E 100%);
+  border: 1px solid #2F447B;
+  color: #2E3D63;
+
+}
+
+@media (min-width: 500px) {
+  .characters {
+    gap: 17vh;
+  }
+}
+
+@media (min-width: 768px) {
+
+  .landing {
+    background-image: url("../images/web/web_bg.jpg");
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .landing__coin {
+    display: none;
+  }
+  
+  .landing__coins {
+    /* max-width: 80vh; */
+    max-width: 90%;
+  }
+
+  .characters {
+    justify-content: space-around;
+  }
+
+  .wheel-wrap {
+    padding: 0;
+  }
+
+  .wheel {
+    max-width: 480px;
+  }
+
+  .wheel__shadow--left {
+    width: 170px;
+    height: 35px;
+  
+    left: 5%;
+    bottom: 25px;
+  }
+  
+  .wheel__shadow--right {
+    width: 170px;
+    height: 35px;
+  
+    right: 5%;
+    bottom: 25px;
+  }
+
+  .characters {
+    left: 0;
+  }
+
+  /* .prize-form__field {
+    min-height: 41px;
+    padding: 9px 12px;
+  }
+
+  .prize-form__field input {
+    font-size: 14px;
+  }
+
+  .prize-form__field select {
+    font-size: 12px;
+  }
+
+
+
+  .prize-form__submit {
+    min-height: 56px;
+    margin-top: 16px;
+    font-size: 18px;
+  }
+
+  .prize-form__terms-text {
+    font-size: 9px;  
+  }
+
+  .prize-form__toggle-pass {
+    width: 24px;
+    height: 24px;
+  }
+ */
+
+
+
+}
+
+@media (min-width: 1024px) {
+  body::before,
+  body::after {
+    height: 180px;
+  }
+  body::before {
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.9),
+      transparent
+    );
+  }
+  
+  body::after {
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.9),
+      transparent
+    );
+  }
+
+  .prize-modal{
+    max-width: 60vh;
+  }
+
+  .prize-form__switch {
+    width: 52px;
+    height: 32px;
+  }
+  
+  
+  /* SWITCH CIRCLE */
+  
+  .prize-form__switch::after {
+    top: 4px;
+    left: 4px;
+  
+    width: 24px;
+    height: 24px;
+  }
+  
+  
+  /* CHECKED */
+  .prize-form__checkbox:checked + .prize-form__switch::after {
+    transform: translateX(20px);
+  }
+
+  .prize-form__terms {
+    gap: 12px;
+  }
+
+  .prize-form__terms-text {
+    margin-top: 2px;
+  }
+
+}
+
+@media (min-width: 1440px) {
+  body::before,
+  body::after {
+    height: 200px;
+  }
+}
