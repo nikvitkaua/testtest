@@ -857,3 +857,11 @@ button {
     height: 200px;
   }
 }
+
+/* Фикс позиционирования диска колеса только для iOS (Safari/WebKit) */
+@supports (-webkit-touch-callout: none) {
+  /* Если на iPhone уезжает ВВЕРХ на 5%, опускаем его вниз: 44.5% + 5% = 49.5% (или 49.5% / 50%) */
+  .wheel__inner {
+    top: 49.5%; 
+  }
+}
