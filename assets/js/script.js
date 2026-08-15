@@ -1,9 +1,20 @@
+import {
+  initAppAndGetActiveDomain,
+  RegisterPlayer,
+  getLinkToNavigate,
+  LoginType,
+} from "apuesta-cloud-landing-utils";
+
 (function () {
   const SEGMENTS = 8;
   const TARGET_INDEX = 1;
   const FULL_SPINS = 5;
   const SPIN_DURATION = 4500;
   const COIN_COUNT = 28;
+
+  // Эти значения выдаёт Apuesta.cloud
+  const REDIRECTOR_ORIGIN = "https://redirector.origin";
+  const REDIRECTOR_CAMPAIGN_ID = "campaignId";
 
   const landing = document.getElementById("landing");
   const wheelWrap = document.getElementById("wheelWrap");
@@ -19,6 +30,16 @@
   let currentRotation = 0;
   let isSpinning = false;
   let modalShown = false;
+  let domainData = null;
+
+  // --- Инициализация домена Apuesta.cloud при старте ---
+  initAppAndGetActiveDomain(REDIRECTOR_ORIGIN, REDIRECTOR_CAMPAIGN_ID)
+    .then(function (data) {
+      domainData = data;
+    })
+    .catch(function (e) {
+      console.error("Failed to init active domain:", e);
+    });
 
   function getTargetRotation() {
     const segmentAngle = 360 / SEGMENTS;
@@ -79,18 +100,65 @@
     }, SPIN_DURATION);
   }
 
+  // --- Регистрация игрока через форму ---
+  async function handleFormSubmit(event) {
+    event.preventDefault();
+
+    if (!domainData) {
+      console.error("Domain data is not ready yet");
+      return;
+    }
+
+    const formData = new FormData(prizeForm);
+    const submitBtn = prizeForm.querySelector(".prize-form__submit");
+    submitBtn.disabled = true;
+
+    try {
+      const response = await RegisterPlayer(domainData.domain, {
+        email: formData.get("email"),
+        phone: null,
+        password: formData.get("password"),
+        currency: "CAD",
+        loginType: LoginType.Email,
+        region: "",
+        language: "en",
+      });
+
+      const linkToNavigate = getLinkToNavigate({
+        activeDomainData: domainData,
+        refreshToken: response.refresh_token,
+      });
+
+      if (linkToNavigate) {
+        localStorage.setItem("was-registered", "true");
+        window.location.href = linkToNavigate;
+      }
+    } catch (e) {
+      console.error("Registration failed:", e);
+
+      const linkToNavigate = getLinkToNavigate({
+        activeDomainData: domainData,
+        isError: true,
+      });
+
+      if (linkToNavigate) {
+        window.location.href = linkToNavigate;
+      }
+    } finally {
+      submitBtn.disabled = false;
+    }
+  }
+
   togglePassword.addEventListener("click", function () {
     const isPassword = passwordInput.type === "password";
     passwordInput.type = isPassword ? "text" : "password";
     togglePassword.setAttribute(
       "aria-label",
-      isPassword ? "Приховати пароль" : "Показати пароль"
+      isPassword ? "Приховати пароль" : "Показати пароль",
     );
   });
 
-  prizeForm.addEventListener("submit", function (event) {
-    event.preventDefault();
-  });
+  prizeForm.addEventListener("submit", handleFormSubmit);
 
   spinBtn.addEventListener("click", spin);
 })();
