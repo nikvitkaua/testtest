@@ -14,7 +14,7 @@ body {
 }
 
 body {
-  font-family: "Outfit", sans-serif;;
+  font-family: "Outfit", sans-serif;
   background: #000;
   overflow-x: hidden;
 }
@@ -42,21 +42,13 @@ body::after {
 body::before {
   top: 0;
 
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.8),
-    transparent
-  );
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent);
 }
 
 body::after {
   bottom: 0;
 
-  background: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 0.8),
-    transparent
-  );
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
 }
 
 img {
@@ -243,10 +235,11 @@ button {
   padding: 0;
   background: transparent;
   cursor: pointer;
-  
 }
 
-.wheel__btn img {display: none;}
+.wheel__btn img {
+  display: none;
+}
 
 .wheel__btn:hover:not(:disabled) {
   transform: translate(-50%, -50%) scale(1.05);
@@ -302,7 +295,9 @@ button {
 }
 
 .wheel-wrap {
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
 }
 
 .wheel-wrap.is-hidden {
@@ -333,7 +328,9 @@ button {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: opacity 0.45s ease, visibility 0.45s ease;
+  transition:
+    opacity 0.45s ease,
+    visibility 0.45s ease;
 }
 
 .prize-overlay.is-visible {
@@ -348,7 +345,6 @@ button {
   background: rgba(4, 12, 28, 0.25);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
-  
 }
 
 .coin-rain {
@@ -441,7 +437,6 @@ button {
   gap: 6px;
 }
 
-
 /* =========================
    INPUT / SELECT FIELDS
    ========================= */
@@ -457,19 +452,14 @@ button {
 
   border-radius: 6px;
 
-  background: linear-gradient(
-    180deg,
-    #ffffff 0%,
-    #e8edf5 100%
-  );
+  background: linear-gradient(180deg, #ffffff 0%, #e8edf5 100%);
 }
 
 .prize-form__field--select {
-  background: #0A0704;
-  border: 0.85px solid #251E12;
+  background: #0a0704;
+  border: 0.85px solid #251e12;
   margin-top: 2px;
 }
-
 
 /* ICON */
 
@@ -488,7 +478,6 @@ button {
   opacity: 0.55;
 }
 
-
 /* INPUT + SELECT */
 
 .prize-form__field input,
@@ -500,29 +489,27 @@ button {
   outline: none;
 
   background: transparent;
-  font-size: clamp(.5rem, 2vw, 1.25rem);
+  font-size: clamp(0.5rem, 1.5vw, 0.9rem);
   font-weight: 400;
   line-height: 1;
 
-  color: #0B1620;
+  color: #0b1620;
 }
 
 .prize-form__field input::placeholder {
-  color: #0B1620;
+  color: #0b1620;
 }
-
 
 /* SELECT */
 
 .prize-form__field p {
   appearance: none;
   cursor: pointer;
-  font-size: clamp(.4rem, 2vw, 1.1rem);
+  font-size: clamp(0.4rem, 1.5vw, 0.8rem);
   font-weight: 500;
 
-  color: #7E92A1;
+  color: #7e92a1;
 }
-
 
 /* =========================
    PASSWORD TOGGLE
@@ -551,7 +538,6 @@ button {
   cursor: pointer;
 }
 
-
 /* =========================
    TERMS
    ========================= */
@@ -567,7 +553,6 @@ button {
   cursor: pointer;
 }
 
-
 /* REAL CHECKBOX HIDDEN */
 
 .prize-form__checkbox {
@@ -578,7 +563,6 @@ button {
 
   opacity: 0;
 }
-
 
 /* CUSTOM SWITCH */
 
@@ -595,7 +579,6 @@ button {
   transition: background 0.2s ease;
 }
 
-
 /* SWITCH CIRCLE */
 
 .prize-form__switch::after {
@@ -611,25 +594,24 @@ button {
 
   border-radius: 50%;
 
-  background: #89A5DF;
+  background: #89a5df;
 
   transition: transform 0.2s ease;
 }
 
-
 /* CHECKED */
 .prize-form__checkbox:checked + .prize-form__switch::after {
   transform: translateX(12px);
-  background: linear-gradient(180deg, #6997EC 0%, #334E98 100%);
+  background: linear-gradient(180deg, #6997ec 0%, #334e98 100%);
   box-shadow: 0px 2px 2px 0px #00000066;
 }
 
 .prize-form__checkbox:disabled + .prize-form__switch {
-  background: #AFB1B6;
+  background: #afb1b6;
 }
 
 .prize-form__checkbox:disabled + .prize-form__switch::after {
-  background: #767A83;
+  background: #767a83;
 }
 
 /* TERMS TEXT */
@@ -641,15 +623,13 @@ button {
   line-height: 1;
   font-weight: 400;
 
-  color: #F1F1F1;
-
+  color: #f1f1f1;
 }
 
 .prize-form__terms-text a {
-  color: #FFA034;
+  color: #ffa034;
   text-decoration: none;
 }
-
 
 /* =========================
    SUBMIT BUTTON
@@ -664,11 +644,10 @@ button {
   border: none;
   border-radius: 50px;
 
-  background: linear-gradient(180deg, #6997EC 0%, #334E98 100%);
+  background: linear-gradient(180deg, #6997ec 0%, #334e98 100%);
   box-shadow: 0px 2px 2px 0px #00000066;
 
-
-  border: 1px solid #2F447B;
+  border: 1px solid #2f447b;
 
   color: #fff;
 
@@ -685,22 +664,34 @@ button {
 
 .prize-form__submit:hover {
   transform: scale(1.05);
-  background: linear-gradient(180deg, #A7C1FF 0%, #4D6AD5 100%);
-  border: 1px solid #4B68D0;
+  background: linear-gradient(180deg, #a7c1ff 0%, #4d6ad5 100%);
+  border: 1px solid #4b68d0;
   box-shadow: 0px 2px 2px 0px #00000066;
-
 }
 
 .prize-form__submit:focus {
-  background: linear-gradient(180deg, #ABC8FC 0%, #334E98 112.5%);
-  border: 1px solid #425C9F;
+  background: linear-gradient(180deg, #abc8fc 0%, #334e98 112.5%);
+  border: 1px solid #425c9f;
 }
 
 .prize-form__submit:disabled {
-  background: linear-gradient(180deg, #4B6597 0%, #30416E 100%);
-  border: 1px solid #2F447B;
-  color: #2E3D63;
+  background: linear-gradient(180deg, #4b6597 0%, #30416e 100%);
+  border: 1px solid #2f447b;
+  color: #2e3d63;
+}
 
+.prize-form__field.has-error {
+  outline: 1.5px solid #ff5a5a;
+}
+
+.prize-form__error {
+  display: none;
+  font-size: clamp(0.5rem, 0.9vw, 0.7rem);
+  color: #ff7a7a;
+  margin: -2px 0 0 4px;
+}
+.prize-form__error.show {
+  display: block;
 }
 
 @media (min-width: 500px) {
@@ -710,7 +701,6 @@ button {
 }
 
 @media (min-width: 768px) {
-
   .landing {
     background-image: url("../images/web/web_bg.jpg");
     display: flex;
@@ -721,7 +711,7 @@ button {
   .landing__coin {
     display: none;
   }
-  
+
   .landing__coins {
     /* max-width: 80vh; */
     max-width: 90%;
@@ -742,15 +732,15 @@ button {
   .wheel__shadow--left {
     width: 170px;
     height: 35px;
-  
+
     left: 5%;
     bottom: 25px;
   }
-  
+
   .wheel__shadow--right {
     width: 170px;
     height: 35px;
-  
+
     right: 5%;
     bottom: 25px;
   }
@@ -789,9 +779,6 @@ button {
     height: 24px;
   }
  */
-
-
-
 }
 
 @media (min-width: 1024px) {
@@ -800,22 +787,14 @@ button {
     height: 180px;
   }
   body::before {
-    background: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.9),
-      transparent
-    );
-  }
-  
-  body::after {
-    background: linear-gradient(
-      to top,
-      rgba(0, 0, 0, 0.9),
-      transparent
-    );
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), transparent);
   }
 
-  .prize-modal{
+  body::after {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+  }
+
+  .prize-modal {
     max-width: 60dvh;
   }
 
@@ -823,19 +802,17 @@ button {
     width: 52px;
     height: 32px;
   }
-  
-  
+
   /* SWITCH CIRCLE */
-  
+
   .prize-form__switch::after {
     top: 4px;
     left: 4px;
-  
+
     width: 24px;
     height: 24px;
   }
-  
-  
+
   /* CHECKED */
   .prize-form__checkbox:checked + .prize-form__switch::after {
     transform: translateX(20px);
@@ -848,7 +825,6 @@ button {
   .prize-form__terms-text {
     margin-top: 2px;
   }
-
 }
 
 @media (min-width: 1440px) {
@@ -863,31 +839,31 @@ button {
 
   .wheel__shadows {
     position: absolute;
-  
+
     left: 0;
     right: 0;
-  
+
     bottom: -28px;
-  
+
     z-index: 0;
-  
+
     pointer-events: none;
   }
-  
-  .wheel__shadow {  
+
+  .wheel__shadow {
     filter: blur(11px);
   }
-  
+
   .wheel__shadow--left {
     width: 250px;
     height: 50px;
   }
-  
+
   .wheel__shadow--right {
     width: 250px;
     height: 50px;
   }
-  
+
   .wheel__shadow--main {
     width: 400px;
     height: 70px;
@@ -898,6 +874,6 @@ button {
 
 @supports (-webkit-touch-callout: none) {
   .wheel__inner {
-    top: 51.5%; 
+    top: 51.5%;
   }
 }

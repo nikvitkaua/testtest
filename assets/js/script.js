@@ -12,9 +12,8 @@ import {
   const SPIN_DURATION = 4500;
   const COIN_COUNT = 28;
 
-  // Эти значения выдаёт Apuesta.cloud
-  const REDIRECTOR_ORIGIN = "https://redirector.origin";
-  const REDIRECTOR_CAMPAIGN_ID = "campaignId";
+  const REDIRECTOR_ORIGIN = "https://sltrd.link/";
+  const REDIRECTOR_CAMPAIGN_ID = "da134877";
 
   const landing = document.getElementById("landing");
   const wheelWrap = document.getElementById("wheelWrap");
@@ -32,7 +31,6 @@ import {
   let modalShown = false;
   let domainData = null;
 
-  // --- Инициализация домена Apuesta.cloud при старте ---
   initAppAndGetActiveDomain(REDIRECTOR_ORIGIN, REDIRECTOR_CAMPAIGN_ID)
     .then(function (data) {
       domainData = data;
@@ -100,7 +98,6 @@ import {
     }, SPIN_DURATION);
   }
 
-  // --- Регистрация игрока через форму ---
   async function handleFormSubmit(event) {
     event.preventDefault();
 
@@ -161,4 +158,125 @@ import {
   prizeForm.addEventListener("submit", handleFormSubmit);
 
   spinBtn.addEventListener("click", spin);
+})();
+
+(function () {
+  const form = document.getElementById("prizeForm");
+  const emailInput = document.getElementById("emailInput");
+  const passwordInput = document.getElementById("passwordInput");
+  const emailField = document.getElementById("emailField");
+  const passwordField = document.getElementById("passwordField");
+  const emailError = document.getElementById("emailError");
+  const passwordError = document.getElementById("passwordError");
+  const toggleBtn = document.getElementById("togglePassword");
+  const termsCheckbox = form.querySelector('input[name="terms"]');
+  const submitBtn = document.getElementById("submitBtn");
+
+  const EMAIL_MIN_LEN = 3;
+  const PASSWORD_MIN_LEN = 5;
+  const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  function setError(fieldEl, errorEl, message) {
+    if (message) {
+      fieldEl.classList.add("has-error");
+      errorEl.textContent = message;
+      errorEl.classList.add("show");
+    } else {
+      fieldEl.classList.remove("has-error");
+      errorEl.textContent = "";
+      errorEl.classList.remove("show");
+    }
+  }
+
+  function validateEmail() {
+    const value = emailInput.value.trim();
+
+    if (!value) {
+      setError(emailField, emailError, "Field is required");
+      return false;
+    }
+    if (value.length < EMAIL_MIN_LEN) {
+      setError(
+        emailField,
+        emailError,
+        "Login should be at least 3 characters long",
+      );
+      return false;
+    }
+    if (!EMAIL_REGEX.test(value)) {
+      setError(emailField, emailError, "Email is not valid");
+      return false;
+    }
+    setError(emailField, emailError, "");
+    return true;
+  }
+
+  function validatePassword() {
+    const value = passwordInput.value;
+
+    if (!value) {
+      setError(passwordField, passwordError, "Field is required");
+      return false;
+    }
+    if (value.length < PASSWORD_MIN_LEN) {
+      setError(
+        passwordField,
+        passwordError,
+        "Password must be at least 5 characters long",
+      );
+      return false;
+    }
+    setError(passwordField, passwordError, "");
+    return true;
+  }
+
+  function updateSubmitState() {
+    const isEmailValid =
+      EMAIL_REGEX.test(emailInput.value.trim()) &&
+      emailInput.value.trim().length >= EMAIL_MIN_LEN;
+    const isPasswordValid = passwordInput.value.length >= PASSWORD_MIN_LEN;
+    const areTermsAccepted = termsCheckbox.checked;
+
+    submitBtn.disabled = !(isEmailValid && isPasswordValid && areTermsAccepted);
+  }
+
+  function handleEmailChange() {
+    validateEmail();
+    updateSubmitState();
+  }
+
+  function handlePasswordChange() {
+    validatePassword();
+    updateSubmitState();
+  }
+
+  // динамическая валидация — срабатывает при каждом вводе, не только при потере фокуса
+  emailInput.addEventListener("input", handleEmailChange);
+  passwordInput.addEventListener("input", handlePasswordChange);
+  emailInput.addEventListener("blur", handleEmailChange);
+  passwordInput.addEventListener("blur", handlePasswordChange);
+  termsCheckbox.addEventListener("change", updateSubmitState);
+
+  toggleBtn.addEventListener("click", () => {
+    const isPassword = passwordInput.type === "password";
+    passwordInput.type = isPassword ? "text" : "password";
+    toggleBtn.setAttribute(
+      "aria-label",
+      isPassword ? "Hide pass" : "Show pass",
+    );
+  });
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const isEmailValid = validateEmail();
+    const isPasswordValid = validatePassword();
+
+    if (isEmailValid && isPasswordValid && termsCheckbox.checked) {
+      // форма валидна — тут можно вызывать реальный submit / fetch
+      form.submit();
+    }
+  });
+
+  // выставляем начальное состояние кнопки при загрузке
+  updateSubmitState();
 })();
