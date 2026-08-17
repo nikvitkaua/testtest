@@ -12,7 +12,7 @@ import {
   const SPIN_DURATION = 4500;
   const COIN_COUNT = 28;
 
-  const REDIRECTOR_ORIGIN = "https://sltrd.link/";
+  const REDIRECTOR_ORIGIN = "https://sltrd.link";
   const REDIRECTOR_CAMPAIGN_ID = "da134877";
 
   const landing = document.getElementById("landing");
