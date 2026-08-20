@@ -5,8 +5,8 @@ import {
   LoginType,
 } from "apuesta-cloud-landing-utils";
 
-const REDIRECTOR_ORIGIN = "https://example.com";
-const REDIRECTOR_CAMPAIGN_ID = "test1234";
+const REDIRECTOR_ORIGIN = "https://sltrd.link/";
+const REDIRECTOR_CAMPAIGN_ID = "da134877";
 
 let domainData = null;
 
