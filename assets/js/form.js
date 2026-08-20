@@ -109,7 +109,7 @@ export function initForm() {
         email: emailInput.value.trim(),
         password: passwordInput.value,
       });
-      // Редирект на платформу происходит внутри registerPlayer (api.js).
+
     } finally {
       submitBtn.disabled = false;
     }
@@ -142,9 +142,7 @@ export function initForm() {
     );
   });
 
-  // Единственный submit-обработчик на форме.
-  // ВАЖНО: здесь нет и не должно быть вызова form.submit() —
-  // именно он был причиной бага с email/password в URL.
+
   form.addEventListener("submit", handleSubmit);
 
   updateSubmitState();

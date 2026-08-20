@@ -10,9 +10,7 @@ const REDIRECTOR_CAMPAIGN_ID = "da134877";
 
 let domainData = null;
 
-/**
- * Инициализация активного домена. Вызывать один раз при старте приложения.
- */
+
 export function initDomain() {
   return initAppAndGetActiveDomain(REDIRECTOR_ORIGIN, REDIRECTOR_CAMPAIGN_ID)
     .then((data) => {
@@ -29,12 +27,7 @@ export function isDomainReady() {
   return Boolean(domainData);
 }
 
-/**
- * Регистрирует игрока и делает редирект на платформу.
- * Кидает ошибку наружу, если домен ещё не готов или запрос не прошёл —
- * решение, что делать дальше (например, разблокировать кнопку),
- * остаётся за вызывающим кодом (form.js).
- */
+
 export async function registerPlayer({ email, password, currency = "CAD" }) {
   if (!domainData) {
     throw new Error("Domain data is not ready yet");

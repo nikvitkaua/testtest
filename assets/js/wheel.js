@@ -1,5 +1,3 @@
-// Импорт картинки как модуля — обязательно для того, чтобы Vite
-// правильно обработал путь после билда (см. пояснение в чате).
 import mobCoin from "../images/mob/mob_coin.png";
 
 const SEGMENTS = 8;
@@ -8,7 +6,7 @@ const FULL_SPINS = 5;
 const SPIN_DURATION = 5200;
 const COIN_COUNT = 28;
 
-// Доля от общей длительности, которая уходит на разгон в начале.
+
 const ACCEL_PHASE = 0.12;
 
 let currentRotation = 0;
@@ -48,20 +46,17 @@ export function initWheel({ canSpin, onSpinEnd } = {}) {
 
     wheelInner.classList.add("is-spinning");
 
-    // Три фазы одной анимации, каждая со своей кривой:
-    // 1) быстрый плавный разгон (ease-in)
-    // 2) долгая плавная остановка (ease-out, "накат")
-    // Middle keyframe задаёт offset — момент, где заканчивается разгон.
+ 
     const animation = wheelDisc.animate(
       [
         {
           transform: `rotate(${startRotation}deg)`,
-          easing: "cubic-bezier(0.55, 0.06, 0.68, 0.19)", // резкий разгон
+          easing: "cubic-bezier(0.55, 0.06, 0.68, 0.19)",
         },
         {
           transform: `rotate(${rampRotation}deg)`,
           offset: ACCEL_PHASE,
-          easing: "cubic-bezier(0.16, 1, 0.3, 1)", // долгое плавное торможение
+          easing: "cubic-bezier(0.16, 1, 0.3, 1)",
         },
         {
           transform: `rotate(${targetRotation}deg)`,
@@ -76,8 +71,7 @@ export function initWheel({ canSpin, onSpinEnd } = {}) {
     currentRotation = targetRotation;
 
     animation.onfinish = () => {
-      // Переносим итоговый угол в обычный inline-style и убиваем Web Animation,
-      // чтобы следующий спин стартовал от чистого состояния.
+
       wheelDisc.style.transform = `rotate(${targetRotation}deg)`;
       animation.cancel();
 
@@ -93,9 +87,7 @@ export function initWheel({ canSpin, onSpinEnd } = {}) {
   return { spin, wheelWrap };
 }
 
-/**
- * Создаёт анимацию падающих монеток внутри #coinRain.
- */
+
 export function createCoinRain() {
   const coinRain = document.getElementById("coinRain");
   coinRain.innerHTML = "";
