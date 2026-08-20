@@ -75,6 +75,7 @@ button {
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
+
 }
 
 .landing__bg {
@@ -113,7 +114,7 @@ button {
   z-index: 3;
   display: flex;
   justify-content: center;
-  padding-top: 20%;
+  padding-top: 30%;
 }
 
 .wheel {
