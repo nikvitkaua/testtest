@@ -75,7 +75,9 @@ button {
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
-
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 .landing__bg {
@@ -96,6 +98,7 @@ button {
   z-index: 2;
   pointer-events: none;
   max-width: 50dvh;
+  transition: transform 0.1s ease-out;
 }
 
 .landing__coin {
@@ -114,7 +117,7 @@ button {
   z-index: 3;
   display: flex;
   justify-content: center;
-  padding-top: 30%;
+  margin-bottom: 25vh;
 }
 
 .wheel {
@@ -191,6 +194,16 @@ button {
   aspect-ratio: 1;
   transform: translate(-50%, -50%);
   z-index: 2;
+}
+
+.wheel__inner::before {
+  content: "";
+  position: absolute;
+  inset: -13%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(160, 230, 255, 1), transparent 80%);
+  filter: blur(20px);
+  z-index: -1;
 }
 
 .wheel__inner picture {
@@ -383,7 +396,6 @@ button {
   width: 100%;
   max-width: 70dvh;
   left: 3%;
-  top: 10%;
 
   transform: translateY(40px) scale(0.88);
   opacity: 0;
@@ -391,6 +403,18 @@ button {
   transition:
     transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
     opacity 0.45s ease;
+}
+
+.prize-modal::before {
+  content: "";
+  position: absolute;
+  inset: 13px;
+  left: 0%;
+  bottom: -1%;
+  background: rgba(175, 215, 255, 1);
+  filter: blur(10px);
+  opacity: 0.9;
+  z-index: -1;
 }
 
 .prize-overlay.is-visible .prize-modal {
@@ -754,7 +778,7 @@ button {
   }
 
   .wheel-wrap {
-    padding: 0;
+    margin-bottom: 0;
   }
 
   .wheel {
@@ -781,36 +805,11 @@ button {
     left: 0;
   }
 
-  /* .prize-form__field {
-    min-height: 41px;
-    padding: 9px 12px;
-  }
-
-  .prize-form__field input {
-    font-size: 14px;
-  }
-
-  .prize-form__field select {
-    font-size: 12px;
+  .prize-modal {
+    top: 10%;
   }
 
 
-
-  .prize-form__submit {
-    min-height: 56px;
-    margin-top: 16px;
-    font-size: 18px;
-  }
-
-  .prize-form__terms-text {
-    font-size: 9px;  
-  }
-
-  .prize-form__toggle-pass {
-    width: 24px;
-    height: 24px;
-  }
- */
 }
 
 @media (min-width: 1024px) {
@@ -828,6 +827,14 @@ button {
 
   .prize-modal {
     max-width: 60dvh;
+  }
+
+  .prize-modal::before {
+    inset: 10px;
+    left: -1%;
+    bottom: -1%;
+    background: rgba(175, 215, 255, 1);
+    filter: blur(25px);
   }
 
   .prize-form__switch {

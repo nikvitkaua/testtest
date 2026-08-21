@@ -92,6 +92,9 @@ export function createCoinRain() {
   const coinRain = document.getElementById("coinRain");
   coinRain.innerHTML = "";
 
+  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+  const sizeMultiplier = isDesktop ? 2.5 : 1;
+
   for (let i = 0; i < COIN_COUNT; i += 1) {
     const coin = document.createElement("img");
     coin.src = mobCoin;
@@ -100,7 +103,16 @@ export function createCoinRain() {
     coin.style.left = Math.random() * 100 + "%";
     coin.style.animationDelay = Math.random() * 2.5 + "s";
     coin.style.animationDuration = 2.8 + Math.random() * 2.4 + "s";
-    coin.style.width = 24 + Math.random() * 28 + "px";
+    coin.style.width = (24 + Math.random() * 28) * sizeMultiplier + "px";
     coinRain.appendChild(coin);
   }
 }
+
+const coins = document.querySelector(".landing__coins");
+
+document.addEventListener("mousemove", (e) => {
+  const x = (e.clientX / window.innerWidth - 0.5) * 20;
+  const y = (e.clientY / window.innerHeight - 1) * 20;
+
+  coins.style.transform = `translate(${x}px, ${y}px)`;
+});
